@@ -4,7 +4,12 @@ const Context = React.createContext()
 
 function ContextProvider({children}) {
     const [topHundred, setTopHundred] = React.useState([])
-    const [portfolioItems, setPortfolioItems] = React.useState([])
+    const [portfolioItems, setPortfolioItems] = React.useState(() => {
+        const storedPortfolio = localStorage.getItem('portfolio')
+        return storedPortfolio !== null
+            ? JSON.parse(storedPortfolio)
+            : [];
+      })
 
 //function to get data from coingecko API
     function getData() {
@@ -21,11 +26,34 @@ function ContextProvider({children}) {
             }, 3600000)
         return () => clearInterval(interval)
     }, [])
-    console.log(topHundred)
+    // console.log(topHundred)
+
+//function to add a coin to portfolio
+    function addToPortfolio(selectedPortfolioItem) {
+        setPortfolioItems(prevPortfolioItems => {
+            if(portfolioItems.some(asset => asset.id === selectedPortfolioItem.id)){
+                return (
+                    prevPortfolioItems
+                )
+            } else {
+                return(
+                    [...prevPortfolioItems, selectedPortfolioItem]
+                )    
+            }
+        })
+    }
+    
+
+    React.useEffect(() => {
+        localStorage.setItem('portfolio', JSON.stringify(portfolioItems))
+        console.log(portfolioItems)
+    }, [portfolioItems])
 
     return (
         <Context.Provider value={{
-            topHundred: topHundred
+            topHundred: topHundred,
+            addToPortfolio: addToPortfolio,
+            portfolioItems: portfolioItems
         }}>
             {children}
         </Context.Provider>

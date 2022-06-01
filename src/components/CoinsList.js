@@ -3,7 +3,7 @@ import React from 'react'
 import {Context} from "../CoinsContext"
 
 function CoinsList() {
-    const {topHundred} = React.useContext(Context)
+    const {topHundred, addToPortfolio} = React.useContext(Context)
 
     const coinSummaryHtml = topHundred.map((obj, i) => {
         return(
@@ -22,7 +22,7 @@ function CoinsList() {
                 <h4>
                     24 hour change: {obj.price_change_percentage_24h.toLocaleString("en-US", {minimumFractionDigits: 3})}%
                 </h4>
-                <button >Add to portfolio</button>
+                <button onClick={() => addToPortfolio(obj)} >Add to portfolio</button>
             </div>
         )
     })
