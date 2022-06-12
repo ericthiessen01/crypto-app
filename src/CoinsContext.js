@@ -34,9 +34,11 @@ function ContextProvider({children}) {
         }, 3600000)
         return () => clearInterval(interval)
     }, [])
-    // console.log(topHundred)
+    console.log(topHundred)
 
 //function to add a coin to portfolio
+//add feature to hide button if coin is already in portfolio
+//add KVP for quantity
     function addToPortfolio(selectedPortfolioItem) {
         setPortfolioItems(prevPortfolioItems => {
             if(prevPortfolioItems.some(asset => asset.id === selectedPortfolioItem.id)){
@@ -50,6 +52,13 @@ function ContextProvider({children}) {
             }
         })
     }
+
+//function to remove a coin from portfolio
+function removeFromPortfolio(selectedPortfolioItem) {
+    setPortfolioItems(prevPortfolioItems => 
+        prevPortfolioItems.filter(item => item.id != selectedPortfolioItem.id)
+    )
+}
     
 
     React.useEffect(() => {
@@ -61,7 +70,8 @@ function ContextProvider({children}) {
         <Context.Provider value={{
             topHundred: topHundred,
             addToPortfolio: addToPortfolio,
-            portfolioItems: portfolioItems
+            portfolioItems: portfolioItems,
+            removeFromPortfolio: removeFromPortfolio
         }}>
             {children}
         </Context.Provider>

@@ -9,7 +9,7 @@ function CoinsList() {
         return(
             <div className='coin-container' key={obj.id}>
                 <img className='coin-logo' src={obj.image} alt="asset-logo"></img>
-                <h4>Rank by market cap: {i+1}</h4>
+                <h4>Rank by market cap: {obj.market_cap_rank}</h4>
                 <h4>
                     {obj.symbol}:{' '}
                     {obj.current_price.toLocaleString("en-US", {
