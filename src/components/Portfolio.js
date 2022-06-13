@@ -7,30 +7,40 @@ function Portfolio() {
 
     const portfolioItemsHtml = portfolioItems.map((obj) => {
         return(
-            <div className='coin-container' key={obj.id}>
-                <img className='coin-logo' src={obj.image} alt="asset-logo"></img>
-                <h4>Rank by market cap: {obj.market_cap_rank}</h4>
-                <h4>
-                    {obj.symbol}:{' '}
+            <tr className='coin-container' key={obj.id}>
+                <td className='name-col'>
+                    <img className='coin-logo' src={obj.image} alt="asset-logo"/>{' '}{obj.name}
+                </td>
+                <td className='price-col'>
                     {obj.current_price.toLocaleString("en-US", {
                         style: "currency", 
                         currency: "USD", 
                         maximumFractionDigits: 8,
                         minimumFractionDigits: 0
                     })}
-                </h4>
-                <h4>
-                    24 hour change: {obj.price_change_percentage_24h.toLocaleString("en-US", {minimumFractionDigits: 3})}%
-                </h4>
-                <button onClick={() => removeFromPortfolio(obj)}>Remove from portfolio</button>
-            </div>
+                </td>
+                <td>{obj.price_change_percentage_24h.toLocaleString("en-US", {minimumFractionDigits: 3})}%</td>
+                <td><button className='links' onClick={() => removeFromPortfolio(obj)} >Remove from portfolio</button></td>
+            </tr>
         )
     })
 
     return (
         <div>
             <h1>Portfolio</h1>
-            {portfolioItemsHtml}
+            <table className='asset-list'>
+                <thead className='table-head'>
+                    <tr className='coin-container'>
+                        <th className='name-col'>Name</th>
+                        <th className='price-col'>Price</th>
+                        <th>24 Hour Change</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {portfolioItemsHtml}
+                </tbody>
+            </table>
         </div>
     )
 }

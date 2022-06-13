@@ -6,17 +6,15 @@ import {
   Link
 } from 'react-router-dom'
 import CoinsList from "./components/CoinsList"
-import Portfolio from './components/Portfolio';
+import Portfolio from './components/Portfolio'
+import Nav from './components/Nav'
 
 function App() {
 
   return (
     <div className="App">
         <Router>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/portfolio">Portfolio</Link>
-          </nav>
+          <Nav />
           <Routes>
             <Route path="/" element={<CoinsList />}/>
             <Route path="/portfolio" element={<Portfolio />}/>
