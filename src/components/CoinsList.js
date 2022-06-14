@@ -25,8 +25,8 @@ function CoinsList() {
                 <td>{obj.price_change_percentage_24h.toLocaleString("en-US", {minimumFractionDigits: 3})}%</td>
                 <td>
                     {portfolioItems.includes(obj) ?
-                    <button onClick={() => {navigate("/portfolio")}}>View Portfolio</button> :
-                    <button onClick={() => addToPortfolio(obj)} >Add to Portfolio</button>
+                    <div className='links' onClick={() => {navigate("/portfolio")}}>View Portfolio</div> :
+                    <div className='links' onClick={() => addToPortfolio(obj)} >Add to Portfolio</div>
                     }
                 </td>
             </tr>
@@ -35,6 +35,7 @@ function CoinsList() {
 
     return (
         <div>
+            <h1>Coin List</h1>
             <table className='asset-list'>
                 <thead className='table-head'>
                     <tr className='coin-container'>

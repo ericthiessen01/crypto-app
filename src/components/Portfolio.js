@@ -20,7 +20,7 @@ function Portfolio() {
                     })}
                 </td>
                 <td>{obj.price_change_percentage_24h.toLocaleString("en-US", {minimumFractionDigits: 3})}%</td>
-                <td><button className='links' onClick={() => removeFromPortfolio(obj)} >Remove from portfolio</button></td>
+                <td><div className='links' onClick={() => removeFromPortfolio(obj)} >Remove from portfolio</div></td>
             </tr>
         )
     })

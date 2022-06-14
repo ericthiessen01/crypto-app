@@ -5,14 +5,22 @@
 }
 
 body {
-  background-color: #222222;
-  color: #efeeef;
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   font-size: 1.175em;
   font-weight: 600;
+}
+
+:root {
+  --main-bg-color: #101010;
+  --secondary-bg-color: #003b49;
+  --main-accent-color: #5d3754;
+  --secondary-accent-color: #41b6e6;
+  --main-font-color: #7da1c4;
 }
 
 .nav-container {
@@ -28,20 +36,52 @@ body {
 }
 
 .links {
-  background: purple;
-  padding: 1rem 1.125rem;
+  background-image: linear-gradient(
+  45deg,
+  hsl(314deg 26% 29%) 72%,
+  hsl(314deg 20% 41%) 98%,
+  hsl(314deg 17% 54%) 101%,
+  hsl(314deg 19% 68%) 102%,
+  hsl(314deg 22% 84%) 101%,
+  hsl(0deg 0% 100%) 100%
+);
+  color: var(--main-font-color);
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 1rem .75em;
   margin: 0 .5rem;
   border-radius: .5rem;
+  transition: 0.3s;
+}
+
+.links:hover, .links:focus {
+  background-image: linear-gradient(
+  225deg,
+  hsl(314deg 26% 29%) 72%,
+  hsl(314deg 20% 41%) 98%,
+  hsl(314deg 17% 54%) 101%,
+  hsl(314deg 19% 68%) 102%,
+  hsl(314deg 22% 84%) 101%,
+  hsl(0deg 0% 100%) 100%
+);
+  box-shadow: 1px 1px 10px var(--secondary-accent-color);
+}
+
+table {
+  border-collapse: collapse;
 }
 
 .coin-container {
   line-height: 5rem;
   font-size: 1.175rem;
   font-weight: 600;
+  border-bottom: 2px solid var(--main-accent-color);
+  transition: 0.5s;
 }
 
 .coin-container:hover {
-  background-color: #333333;
+  background-color: var(--secondary-bg-color);
+  border-bottom: 2px solid var(--secondary-accent-color);
 }
 
 .table-head {
