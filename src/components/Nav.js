@@ -7,8 +7,8 @@ export default function Nav() {
     <div className='nav-container'>
       <h2>Crypto Currency Watchlist</h2>
       <div className='nav-links'>
-        <div className='links' onClick={() => {navigate("/")}} >Home</div>
-        <div className='links' onClick={() => {navigate("/portfolio")}} >Portfolio</div>
+        <div className='links' onClick={() => {navigate("/crypto-app")}} >Home</div>
+        <div className='links' onClick={() => {navigate("/crypto-app/portfolio")}} >Portfolio</div>
       </div>
     </div>
   )
