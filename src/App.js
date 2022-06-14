@@ -16,7 +16,7 @@ function App() {
         <Router>
           <Nav />
           <Routes>
-            <Route path="/crypto-app" element={<CoinsList />}/>
+            <Route path="/" element={<CoinsList />}/>
             <Route path="/portfolio" element={<Portfolio />}/>
           </Routes>
         </Router>
