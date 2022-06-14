@@ -34,7 +34,7 @@ function ContextProvider({children}) {
         }, 3600000)
         return () => clearInterval(interval)
     }, [])
-    console.log(topHundred)
+    // console.log(topHundred)
 
 //add KVP for quantity
 
