@@ -10,11 +10,11 @@ function CoinsList() {
     const coinSummaryHtml = topHundred.map((obj, i) => {
         return(
             <tr className='coin-container' key={obj.id}>
-                <td>{obj.market_cap_rank}</td>
-                <td className='name-col'>
+                <td className='col-short' >{obj.market_cap_rank}</td>
+                <td className='name-col col-long'>
                     <img className='coin-logo' src={obj.image} alt="asset-logo"/>{' '}{obj.name}
                 </td>
-                <td className='price-col'>
+                <td className='price-col col-med'>
                     {obj.current_price.toLocaleString("en-US", {
                         style: "currency", 
                         currency: "USD", 
@@ -22,11 +22,12 @@ function CoinsList() {
                         minimumFractionDigits: 0
                     })}
                 </td>
-                <td>{obj.price_change_percentage_24h.toLocaleString("en-US", {minimumFractionDigits: 3})}%</td>
-                <td>
+                <td className='col-short'>{obj.price_change_percentage_24h.toLocaleString("en-US", {minimumFractionDigits: 3})}%</td>
+            {/* ternary to change button if coin is already in portfolio */}
+                <td className='col-med'>
                     {portfolioItems.includes(obj) ?
-                    <div className='links' onClick={() => {navigate("/portfolio")}}>View Portfolio</div> :
-                    <div className='links' onClick={() => addToPortfolio(obj)} >Add to Portfolio</div>
+                    <button className='links' onClick={() => {navigate("/portfolio")}}>View Portfolio</button> :
+                    <button className='links' onClick={() => addToPortfolio(obj)} >Add to Portfolio</button>
                     }
                 </td>
             </tr>
@@ -34,11 +35,11 @@ function CoinsList() {
     })
 
     return (
-        <div>
+        <div className='main-content'>
             <h1>Coin List</h1>
             <table className='asset-list'>
                 <thead className='table-head'>
-                    <tr className='coin-container'>
+                    <tr>
                         <th>Rank</th>
                         <th className='name-col'>Name</th>
                         <th className='price-col'>Price</th>

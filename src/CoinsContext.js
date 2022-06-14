@@ -26,7 +26,7 @@ function ContextProvider({children}) {
             })
     }
 
-//run fetch and update state every hour
+//run fetch and update state every hour (or other interval as set)
     React.useEffect(() => {
         getData()
         const interval = setInterval(() => {
@@ -36,8 +36,9 @@ function ContextProvider({children}) {
     }, [])
     console.log(topHundred)
 
-//add feature to hide button if coin is already in portfolio
 //add KVP for quantity
+
+//function to add coin to portfolio
     function addToPortfolio(selectedPortfolioItem) {
         setPortfolioItems(prevPortfolioItems => {
             if(prevPortfolioItems.some(asset => asset.id === selectedPortfolioItem.id)){
@@ -59,7 +60,7 @@ function removeFromPortfolio(selectedPortfolioItem) {
     )
 }
     
-
+//store portfolio items in local storage every time portfolio is updated
     React.useEffect(() => {
         localStorage.setItem('portfolio', JSON.stringify(portfolioItems))
         // console.log(portfolioItems)
@@ -79,8 +80,6 @@ function removeFromPortfolio(selectedPortfolioItem) {
 
 export {ContextProvider, Context}
 
-/* add nav to switch between coinslist and portfolio
-add search input to coinslist use | to enable search for name or id
-math in portfolio to calc total value of holdings
-hardcode portfolio data first then use state/local storage to hold data
+/* add search input to coinslist use | to enable search for name or id
+add inputs and math in portfolio to calc total value of holdings
 */
