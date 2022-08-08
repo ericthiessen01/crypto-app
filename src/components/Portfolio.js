@@ -16,7 +16,7 @@ function Portfolio() {
                     {obj.current_price.toLocaleString("en-US", {
                         style: "currency", 
                         currency: "USD", 
-                        maximumFractionDigits: 8,
+                        maximumFractionDigits: 4,
                         minimumFractionDigits: 0
                     })}
                 </td>
